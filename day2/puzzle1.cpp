@@ -24,9 +24,15 @@ int main() {
         uint64_t end = std::stoull(range.substr(dashPos + 1));
         
         for(size_t i = start; i <= end; ++i) {
-            size_t mid = std::to_string(i).size() / 2;
-            std::string first = std::to_string(i).substr(0, mid);
-            std::string second = std::to_string(i).substr(mid);
+            std::string iStr = std::to_string(i);
+
+            if(iStr.size() % 2 != 0)
+                continue;
+            
+            size_t mid = iStr.size() / 2;
+            std::string first = iStr.substr(0, mid);
+            std::string second = iStr.substr(mid);
+
             if(first == second)
                 result += i;
         }
